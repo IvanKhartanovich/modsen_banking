@@ -24,38 +24,30 @@ class TransactionForm extends StatelessWidget {
           initialValue: transaction.transactionNumber,
           readOnly: true,
           style: AppTextStyles.inputTextStyle,
-          decoration:  InputDecoration(
-            border: OutlineInputBorder(),
-          ),
+          decoration: AppInputDecoration.textFieldStyle,
         ),
         AppTextWithPadding.label('Date'),
         TextFormField(
           initialValue: transaction.date,
           readOnly: true,
           style: AppTextStyles.inputTextStyle,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-          ),
+          decoration: AppInputDecoration.textFieldStyle,
         ),
         AppTextWithPadding.label('Transaction status'),
         TextFormField(
           initialValue: transaction.status,
           readOnly: true,
           style: AppTextStyles.inputTextStyle,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-          ),
+          decoration: AppInputDecoration.textFieldStyle,
         ),
         AppTextWithPadding.label('Amount'),
         TextFormField(
           initialValue: transaction.amount,
           readOnly: true,
           style: AppTextStyles.inputTextStyle,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-          ),
+          decoration: AppInputDecoration.textFieldStyle,
         ),
-        SizedBox(height: 24),
+        SizedBox(height: 22),
         Center(
           child: ElevatedButton(
             onPressed: () {

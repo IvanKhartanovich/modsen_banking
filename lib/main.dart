@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: TransactionScreen(
         transaction: Transaction(
-          companyName: 'OOO "Company"',
+          companyName: 'OOO \"Company\"',
           transactionNumber: 'f4345ifshiek3454',
           date: '01.06.2024',
           status: 'Executed',

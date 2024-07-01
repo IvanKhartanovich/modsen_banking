@@ -53,9 +53,10 @@ class AppTextWithPadding {
 }
 
 class AppInputDecoration {
-  static const InputDecoration textFieldStyle = InputDecoration(
+  static final InputDecoration textFieldStyle = InputDecoration(
     border: OutlineInputBorder(
       borderSide: BorderSide(color: Colors.green, width: 3.0),
+      borderRadius: BorderRadius.circular(10.0), // Здесь вы можете установить желаемое значение закругления
     ),
   );
 }
