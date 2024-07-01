@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
+import 'transaction_screen.dart';
+import 'transaction.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return MaterialApp(
+      title: 'Transaction UI',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: TransactionScreen(
+        transaction: Transaction(
+          companyName: 'OOO "Company"',
+          transactionNumber: 'f4345ifshiek3454',
+          date: '01.06.2024',
+          status: 'Executed',
+          amount: '\$10.09',
         ),
       ),
     );
