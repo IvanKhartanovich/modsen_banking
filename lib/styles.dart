@@ -1,4 +1,3 @@
-// Файл: lib/styles.dart
 import 'package:flutter/material.dart';
 
 class AppTextStyles {
@@ -40,6 +39,23 @@ class AppButtonStyles {
     padding: EdgeInsets.fromLTRB(13, 20, 13, 20),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10),
+    ),
+  );
+}
+
+class AppTextWithPadding {
+  static Widget label(String text) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+      child: Text(text, style: AppTextStyles.labelTextStyle),
+    );
+  }
+}
+
+class AppInputDecoration {
+  static const InputDecoration textFieldStyle = InputDecoration(
+    border: OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.green, width: 3.0),
     ),
   );
 }

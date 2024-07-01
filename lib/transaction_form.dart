@@ -12,21 +12,53 @@ class TransactionForm extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        _buildLabel('Transaction was applied in'),
-        _buildReadOnlyField(transaction.companyName),
-        _buildLabel('Transaction number'),
-        _buildReadOnlyField(transaction.transactionNumber),
-        _buildLabel('Date'),
-        _buildReadOnlyField(transaction.date),
-        _buildLabel('Transaction status'),
-        _buildReadOnlyField(transaction.status),
-        _buildLabel('Amount'),
-        _buildReadOnlyField(transaction.amount),
+        AppTextWithPadding.label('Transaction was applied in'),
+        TextFormField(
+          initialValue: transaction.companyName,
+          readOnly: true,
+          style: AppTextStyles.inputTextStyle,
+          decoration: AppInputDecoration.textFieldStyle,
+        ),
+        AppTextWithPadding.label('Transaction number'),
+        TextFormField(
+          initialValue: transaction.transactionNumber,
+          readOnly: true,
+          style: AppTextStyles.inputTextStyle,
+          decoration:  InputDecoration(
+            border: OutlineInputBorder(),
+          ),
+        ),
+        AppTextWithPadding.label('Date'),
+        TextFormField(
+          initialValue: transaction.date,
+          readOnly: true,
+          style: AppTextStyles.inputTextStyle,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+          ),
+        ),
+        AppTextWithPadding.label('Transaction status'),
+        TextFormField(
+          initialValue: transaction.status,
+          readOnly: true,
+          style: AppTextStyles.inputTextStyle,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+          ),
+        ),
+        AppTextWithPadding.label('Amount'),
+        TextFormField(
+          initialValue: transaction.amount,
+          readOnly: true,
+          style: AppTextStyles.inputTextStyle,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+          ),
+        ),
         SizedBox(height: 24),
         Center(
           child: ElevatedButton(
             onPressed: () {
-              // Добавьте здесь действие для кнопки
             },
             child: Text(
               'Okay',
@@ -34,39 +66,10 @@ class TransactionForm extends StatelessWidget {
                 fontWeight: FontWeight.w700, // Увеличиваем жирность шрифта
               ),
             ),
-            style: ElevatedButton.styleFrom(
-              foregroundColor: Colors.white,
-              backgroundColor: Color(0xFF409CFF),
-              minimumSize: Size(double.infinity, 48),
-              padding: EdgeInsets.fromLTRB(13, 20, 13, 20),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
+            style: AppButtonStyles.okayButtonStyle,
           ),
         ),
       ],
-    );
-  }
-
-  Widget _buildLabel(String text) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10.0, bottom: 8.0),
-      child: Text(
-        text,
-        style: AppTextStyles.labelTextStyle,
-      ),
-    );
-  }
-
-  Widget _buildReadOnlyField(String initialValue) {
-    return TextFormField(
-      initialValue: initialValue,
-      readOnly: true,
-      style: AppTextStyles.inputTextStyle,
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-      ),
     );
   }
 }
