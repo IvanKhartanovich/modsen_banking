@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTextStyles {
   static const TextStyle labelTextStyle = TextStyle(
+    color: Colors.white,
     fontFamily: 'SF Pro Text',
     fontWeight: FontWeight.w400,
     fontSize: 17,
@@ -10,6 +11,7 @@ class AppTextStyles {
   );
 
   static const TextStyle inputTextStyle = TextStyle(
+    color: Colors.white,
     fontFamily: 'SF Pro Text',
     fontWeight: FontWeight.w400,
     fontSize: 15,
@@ -18,6 +20,7 @@ class AppTextStyles {
   );
 
   static const TextStyle buttonTextStyle = TextStyle(
+    color: Colors.white,
     fontFamily: 'SF Pro Text',
     fontWeight: FontWeight.w700,
     fontSize: 17,
@@ -26,25 +29,23 @@ class AppTextStyles {
   );
 }
 
-class AppColors {
-  static const Color primaryColor = Color(0xFF409CFF);
-  static const Color backgroundColor = Colors.white;
-}
 
 class AppButtonStyles {
   static final ButtonStyle okayButtonStyle = ElevatedButton.styleFrom(
     foregroundColor: Colors.white,
-    backgroundColor: Color(0xFF409CFF),
-    minimumSize: Size(double.infinity, 48),
-    padding: EdgeInsets.fromLTRB(13, 20, 13, 20),
+    backgroundColor: const Color.fromRGBO(64, 156, 255, 1),
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(8),
     ),
   );
 }
+class Label extends StatelessWidget {
+  final String text;
 
-class AppTextWithPadding {
-  static Widget label(String text) {
+  const Label(this.text, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
       child: Text(text, style: AppTextStyles.labelTextStyle),
@@ -52,11 +53,16 @@ class AppTextWithPadding {
   }
 }
 
+
 class AppInputDecoration {
   static final InputDecoration textFieldStyle = InputDecoration(
-    border: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.green, width: 3.0),
-      borderRadius: BorderRadius.circular(10.0), // Здесь вы можете установить желаемое значение закругления
+    enabledBorder: OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.white, width: 1.0),
+      borderRadius: BorderRadius.circular(8.0),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: const BorderSide(color: Colors.white, width: 1.5),
+      borderRadius: BorderRadius.circular(8.0),
     ),
   );
 }

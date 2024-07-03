@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'transaction.dart';
+import '../entities/transaction.dart';
 import 'styles.dart';
 
 class TransactionForm extends StatelessWidget {
@@ -12,53 +12,54 @@ class TransactionForm extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        AppTextWithPadding.label('Transaction was applied in'),
+        const Label('Transaction was applied in'),
         TextFormField(
           initialValue: transaction.companyName,
           readOnly: true,
           style: AppTextStyles.inputTextStyle,
           decoration: AppInputDecoration.textFieldStyle,
         ),
-        AppTextWithPadding.label('Transaction number'),
+        const Label('Transaction number'),
         TextFormField(
           initialValue: transaction.transactionNumber,
           readOnly: true,
           style: AppTextStyles.inputTextStyle,
           decoration: AppInputDecoration.textFieldStyle,
         ),
-        AppTextWithPadding.label('Date'),
+        const Label('Date'),
         TextFormField(
           initialValue: transaction.date,
           readOnly: true,
           style: AppTextStyles.inputTextStyle,
           decoration: AppInputDecoration.textFieldStyle,
         ),
-        AppTextWithPadding.label('Transaction status'),
+        const Label('Transaction status'),
         TextFormField(
           initialValue: transaction.status,
           readOnly: true,
           style: AppTextStyles.inputTextStyle,
           decoration: AppInputDecoration.textFieldStyle,
         ),
-        AppTextWithPadding.label('Amount'),
+        const Label('Amount'),
         TextFormField(
           initialValue: transaction.amount,
           readOnly: true,
           style: AppTextStyles.inputTextStyle,
           decoration: AppInputDecoration.textFieldStyle,
         ),
-        SizedBox(height: 22),
+        const SizedBox(height: 30),
         Center(
-          child: ElevatedButton(
-            onPressed: () {
-            },
-            child: Text(
-              'Okay',
-              style: AppTextStyles.buttonTextStyle.copyWith(
-                fontWeight: FontWeight.w700, // Увеличиваем жирность шрифта
+          child: SizedBox(
+            width: double.infinity,
+            height: 48,
+            child: ElevatedButton(
+              onPressed: () {},
+              style: AppButtonStyles.okayButtonStyle,
+              child: const Text(
+                'Okay',
+                style: AppTextStyles.buttonTextStyle,
               ),
             ),
-            style: AppButtonStyles.okayButtonStyle,
           ),
         ),
       ],

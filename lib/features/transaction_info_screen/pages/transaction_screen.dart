@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'transaction_form.dart';
-import 'transaction.dart'; // Импортируем модель
+import '../widgets/transaction_form.dart';
+import '../entities/transaction.dart';
 
 class TransactionScreen extends StatelessWidget {
   final Transaction transaction;
@@ -11,9 +11,11 @@ class TransactionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black,
         title: const Text(
           'Transaction',
           style: TextStyle(
+            color: Colors.white,
             fontFamily: 'SF Pro Display',
             fontWeight: FontWeight.bold,
             fontSize: 28,
@@ -26,7 +28,7 @@ class TransactionScreen extends StatelessWidget {
         padding: EdgeInsets.all(16.0),
         child: TransactionForm(transaction: transaction),
       ),
-
+      backgroundColor: Colors.black,
     );
   }
 }
