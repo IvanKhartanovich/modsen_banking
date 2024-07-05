@@ -5,7 +5,7 @@ import '../entities/transaction.dart';
 class AddTransactionScreen extends StatelessWidget {
   final Transaction transaction;
 
-  AddTransactionScreen({required this.transaction});
+  const AddTransactionScreen({super.key, required this.transaction});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class AddTransactionScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: AddTransactionForm(transaction: transaction),
       ),
       backgroundColor: Colors.black,

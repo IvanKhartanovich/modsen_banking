@@ -1,5 +1,5 @@
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart' show CalendarCarousel;
-import 'package:modsen_banking/constants/app_colors.dart';
+import 'package:modsen_banking/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class Calendar extends StatefulWidget {

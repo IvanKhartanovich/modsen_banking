@@ -29,7 +29,6 @@ class AppTextStyles {
   );
 }
 
-
 class AppButtonStyles {
   static final ButtonStyle okayButtonStyle = ElevatedButton.styleFrom(
     foregroundColor: Colors.white,
@@ -39,20 +38,6 @@ class AppButtonStyles {
     ),
   );
 }
-class Label extends StatelessWidget {
-  final String text;
-
-  const Label(this.text, {Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-      child: Text(text, style: AppTextStyles.labelTextStyle),
-    );
-  }
-}
-
 
 class AppInputDecoration {
   static final InputDecoration textFieldStyle = InputDecoration(

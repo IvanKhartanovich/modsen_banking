@@ -16,6 +16,7 @@ dependencies:
   cubit_form: ^2.0.3
 
 
+  bloc: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

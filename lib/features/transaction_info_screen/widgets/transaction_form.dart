@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:modsen_banking/core/constants/styles.dart';
+import '../../add_transaction_screen/widgets/label.dart';
 import '../entities/transaction.dart';
-import 'styles.dart';
 
 class TransactionForm extends StatelessWidget {
   final Transaction transaction;
 
-  TransactionForm({required this.transaction});
+  const TransactionForm({super.key, required this.transaction});
 
   @override
   Widget build(BuildContext context) {

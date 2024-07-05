@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cubit_form/cubit_form.dart';
 
 class TextInputCubit extends StatefulWidget {
@@ -7,10 +6,10 @@ class TextInputCubit extends StatefulWidget {
   final String? hintText;
 
   const TextInputCubit({
-    Key? key,
+    super.key,
     required this.fieldCubit,
     this.hintText,
-  }) : super(key: key);
+  });
 
   @override
   _TextInputCubitState createState() => _TextInputCubitState();

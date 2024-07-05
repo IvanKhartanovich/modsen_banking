@@ -7,12 +7,12 @@ class ErrorTextField extends StatelessWidget {
   final VoidCallback onTap;
 
   const ErrorTextField({
-    Key? key,
+    super.key,
     required this.controller,
     required this.hintText,
     required this.hasError,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -5,25 +5,25 @@ import '../entities/transaction.dart';
 class AddTransactionFormCubit extends FormCubit {
   AddTransactionFormCubit(Transaction transaction) {
     companyName = FieldCubit<String>(
-      initialValue: transaction.companyName,
+      initalValue: transaction.companyName,
       validations: [
         RequiredStringValidation('Company name is required'),
       ],
     );
     transactionNumber = FieldCubit<String>(
-      initialValue: transaction.transactionNumber,
+      initalValue: transaction.transactionNumber,
       validations: [
         RequiredStringValidation('Transaction number is required'),
       ],
     );
     status = FieldCubit<String>(
-      initialValue: transaction.status,
+      initalValue: transaction.status,
       validations: [
         RequiredStringValidation('Status is required'),
       ],
     );
     amount = FieldCubit<String>(
-      initialValue: transaction.amount,
+      initalValue: transaction.amount,
       validations: [
         RequiredStringValidation('Amount is required'),
       ],
