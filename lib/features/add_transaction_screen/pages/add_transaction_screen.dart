@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../widgets/add_transaction_form.dart';
-import '../entities/transaction.dart';
 
 class AddTransactionScreen extends StatelessWidget {
-  final Transaction transaction;
-
-  const AddTransactionScreen({super.key, required this.transaction});
+  const AddTransactionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.white,
+          ),
+        ),
         backgroundColor: Colors.black,
         title: const Text(
           'Transaction',
@@ -24,9 +29,9 @@ class AddTransactionScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
-        child: AddTransactionForm(transaction: transaction),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: AddTransactionForm(),
       ),
       backgroundColor: Colors.black,
     );

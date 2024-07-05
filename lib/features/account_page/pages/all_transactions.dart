@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:modsen_banking/features/account_page/widgets/transaction_card.dart';
+import 'package:modsen_banking/features/filter_window/widgets/bottom_sheet_content.dart';
+import 'package:modsen_banking/features/transaction_info_screen/entities/transaction.dart';
 
 class AllTransactions extends StatelessWidget {
   const AllTransactions({super.key});
@@ -12,7 +15,7 @@ class AllTransactions extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.black,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () => context.pop(),
           icon: const Icon(
             Icons.arrow_back_ios_new_rounded,
             color: Colors.white,
@@ -21,11 +24,35 @@ class AllTransactions extends StatelessWidget {
         title: const Text(
           'All transactions',
           style: TextStyle(
-              color: Colors.white, fontSize: 17, fontWeight: FontWeight.w600),
+            color: Colors.white,
+            fontSize: 17,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return FractionallySizedBox(
+                  heightFactor: 0.46,
+                  child: Container(
+                    color: Colors.black,
+                    child: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      child: BottomSheetContent(),
+                    ),
+                  ),
+                );
+              },
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(40.0),
+                ),
+              ),
+              isScrollControlled: true,
+            ),
             icon: const Icon(
               Icons.more_horiz_rounded,
               color: Colors.white,
@@ -35,66 +62,73 @@ class AllTransactions extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Expanded(
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            child: ListView(children: const [
-              TransactionCard(
-                title: 'Hello world',
+        child: ClipRRect(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          child: ListView(children: [
+            TransactionCard(
+              transaction: Transaction(
+                companyName: 'Hello world',
                 date: '30.06.2024',
                 amount: '15.0',
                 status: 'Declined',
+                transactionNumber: 'dddd',
               ),
-              TransactionCard(
-                title: 'Modsen',
-                date: '30.05.2024',
-                amount: '25.0',
-                status: 'In progress',
-              ),
-              TransactionCard(
-                title: 'Gift',
-                date: '25.06.2024',
-                amount: '100.0',
-                status: 'Executed',
-              ),
-              TransactionCard(
-                title: 'Hello world',
+            ),
+            TransactionCard(
+              transaction: Transaction(
+                companyName: 'Modsen',
                 date: '30.06.2024',
                 amount: '15.0',
-                status: 'Declined',
-              ),
-              TransactionCard(
-                title: 'Modsen',
-                date: '30.05.2024',
-                amount: '25.0',
-                status: 'In progress',
-              ),
-              TransactionCard(
-                title: 'Gift',
-                date: '25.06.2024',
-                amount: '100.0',
                 status: 'Executed',
+                transactionNumber: 'dddd',
               ),
-              TransactionCard(
-                title: 'Hello world',
+            ),
+            TransactionCard(
+              transaction: Transaction(
+                companyName: 'Modsen',
                 date: '30.06.2024',
                 amount: '15.0',
-                status: 'Declined',
-              ),
-              TransactionCard(
-                title: 'Modsen',
-                date: '30.05.2024',
-                amount: '25.0',
                 status: 'In progress',
+                transactionNumber: 'dddd',
               ),
-              TransactionCard(
-                title: 'Gift',
-                date: '25.06.2024',
-                amount: '100.0',
-                status: 'Executed',
+            ),
+            TransactionCard(
+              transaction: Transaction(
+                companyName: 'Modsen',
+                date: '30.06.2024',
+                amount: '15.0',
+                status: 'In progress',
+                transactionNumber: 'dddd',
               ),
-            ]),
-          ),
+            ),
+            TransactionCard(
+              transaction: Transaction(
+                companyName: 'Modsen',
+                date: '30.06.2024',
+                amount: '15.0',
+                status: 'In progress',
+                transactionNumber: 'dddd',
+              ),
+            ),
+            TransactionCard(
+              transaction: Transaction(
+                companyName: 'Modsen',
+                date: '30.06.2024',
+                amount: '15.0',
+                status: 'In progress',
+                transactionNumber: 'dddd',
+              ),
+            ),
+            TransactionCard(
+              transaction: Transaction(
+                companyName: 'Modsen',
+                date: '30.06.2024',
+                amount: '15.0',
+                status: 'In progress',
+                transactionNumber: 'dddd',
+              ),
+            ),
+          ]),
         ),
       ),
     );

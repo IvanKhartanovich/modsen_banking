@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:modsen_banking/features/filter_window/widgets/calendar.dart';
 import '../cubit/date_form_cubit.dart';
 import '../cubit/date_form_state.dart';
 import 'error_text_field.dart';
@@ -15,6 +17,13 @@ class BottomSheetContent extends StatefulWidget {
 class _BottomSheetContentState extends State<BottomSheetContent> {
   final TextEditingController _startDateController = TextEditingController();
   final TextEditingController _endDateController = TextEditingController();
+
+  @override
+  void dispose() {
+    _startDateController.dispose();
+    _endDateController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +69,34 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                     hintText: 'Select start date',
                     hasError: state.startDateError,
                     onTap: () {
-                      // Реализация календаря (1)
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) {
+                          return FractionallySizedBox(
+                            heightFactor: 0.46,
+                            child: Container(
+                              color: Colors.black,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0, vertical: 8.0),
+                                child: Calendar(
+                                  onTap: (value) {
+                                    setState(() {
+                                      _startDateController.text = value;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(40.0),
+                          ),
+                        ),
+                        isScrollControlled: true,
+                      );
                     },
                   ),
                   const SizedBox(height: 16.0),
@@ -78,9 +114,34 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                     controller: _endDateController,
                     hintText: 'Select end date',
                     hasError: state.endDateError,
-                    onTap: () {
-                      // Реализация календаря
-                    },
+                    onTap: () => showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return FractionallySizedBox(
+                          heightFactor: 0.46,
+                          child: Container(
+                            color: Colors.black,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0, vertical: 8.0),
+                              child: Calendar(
+                                onTap: (value) {
+                                  setState(() {
+                                    _endDateController.text = value;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(40.0),
+                        ),
+                      ),
+                      isScrollControlled: true,
+                    ),
                   ),
                   const SizedBox(height: 16.0),
                   const Divider(
@@ -93,6 +154,7 @@ class _BottomSheetContentState extends State<BottomSheetContent> {
                   SubmitButton(
                     onPressed: () {
                       context.read<DateFormCubit>().submit();
+                      context.pop();
                     },
                   ),
                 ],

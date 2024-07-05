@@ -1,21 +1,18 @@
 // Пользовательский виджет для элементов списка
 import 'package:flutter/material.dart';
+import 'package:modsen_banking/features/transaction_info_screen/entities/transaction.dart';
+import 'package:modsen_banking/features/transaction_info_screen/pages/transaction_screen.dart';
 
 class TransactionCard extends StatelessWidget {
-  final String title;
-  final String date;
-  final String amount;
-  final String status;
+  final Transaction transaction;
 
-  const TransactionCard(
-      {required this.title,
-      required this.date,
-      required this.amount,
-      required this.status,
-      super.key});
+  const TransactionCard({
+    required this.transaction,
+    super.key,
+  });
 
-  Color getColor() {
-    switch (status) {
+  Color _getColor() {
+    switch (transaction.status) {
       case 'Executed':
         return const Color.fromARGB(255, 82, 171, 91);
       case 'In progress':
@@ -29,32 +26,30 @@ class TransactionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomCenter,
-      children: [
-        Container(
-          height: 95,
-          color: const Color.fromARGB(255, 28, 28, 30),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                    ),
+    return Container(
+      height: 95,
+      color: const Color.fromARGB(255, 28, 28, 30),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  transaction.companyName,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
                   ),
-                  Expanded(
-                      child: Row(
+                ),
+                Expanded(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        amount,
+                        '\$${transaction.amount}',
                         style: const TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w400,
@@ -65,46 +60,49 @@ class TransactionCard extends StatelessWidget {
                         child: const Text(
                           ' >',
                           style: TextStyle(
-                              color: Colors.white30,
-                              fontSize: 17,
-                              fontWeight: FontWeight.w400),
+                            color: Colors.white30,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                TransactionScreen(transaction: transaction),
+                          ),
                         ),
                       )
                     ],
-                  ))
-                ],
-              ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  date,
-                  style: const TextStyle(
-                      color: Colors.white60,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400),
+                  ),
+                )
+              ],
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                transaction.date,
+                style: const TextStyle(
+                  color: Colors.white60,
+                  fontSize: 13,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  status,
-                  style: TextStyle(
-                      color: getColor(),
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                transaction.status,
+                style: TextStyle(
+                  color: _getColor(),
+                  fontSize: 13,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-            ]),
-          ),
+            ),
+          ],
         ),
-        const Divider(
-          color: Colors.white30,
-          height: 1,
-          thickness: 0.5,
-          indent: 16.0,
-          endIndent: 16.0,
-        )
-      ],
+      ),
     );
   }
 }

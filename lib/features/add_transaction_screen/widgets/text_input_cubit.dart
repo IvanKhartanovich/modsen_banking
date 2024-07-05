@@ -44,7 +44,6 @@ class _TextInputCubitState extends State<TextInputCubit> {
           controller: _controller,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            errorText: null, //?????????????????????????????
           ),
           onChanged: (value) => widget.fieldCubit.setValue(value),
         );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:modsen_banking/core/constants/styles.dart';
 import '../../add_transaction_screen/widgets/label.dart';
 import '../entities/transaction.dart';
@@ -54,7 +55,7 @@ class TransactionForm extends StatelessWidget {
             width: double.infinity,
             height: 48,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => context.pop(),
               style: AppButtonStyles.okayButtonStyle,
               child: const Text(
                 'Okay',

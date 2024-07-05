@@ -1,15 +1,14 @@
-import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart' show CalendarCarousel;
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
+    show CalendarCarousel;
+import 'package:go_router/go_router.dart';
 import 'package:modsen_banking/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class Calendar extends StatefulWidget {
-  const Calendar({super.key});
+class Calendar extends StatelessWidget {
+  const Calendar({required this.onTap, super.key});
 
-  @override
-  _CalendarState createState() => _CalendarState();
-}
+  final Function(String) onTap;
 
-class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -21,10 +20,11 @@ class _CalendarState extends State<Calendar> {
         ),
         child: CalendarCarousel(
           onDayPressed: (date, events) {
-            setState(() {});
-          },   
+            onTap(date.toString());
+            context.pop();
+          },
           daysHaveCircularBorder: false,
-          showOnlyCurrentMonthDate: false, 
+          showOnlyCurrentMonthDate: false,
           weekFormat: false,
           height: 380.0,
           selectedDateTime: DateTime.now(),
@@ -42,7 +42,7 @@ class _CalendarState extends State<Calendar> {
             color: Colors.white,
             fontSize: 20,
           ),
-          headerTextStyle:const TextStyle(
+          headerTextStyle: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
             fontSize: 17,
@@ -60,7 +60,7 @@ class _CalendarState extends State<Calendar> {
           daysTextStyle: const TextStyle(
             fontSize: 20,
             color: Colors.white,
-          ), 
+          ),
           weekdayTextStyle: const TextStyle(
             color: AppColors.calendarWeekdayColor,
             fontSize: 16,

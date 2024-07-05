@@ -1,23 +1,17 @@
-// ignore_for_file: use_super_parameters
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modsen_banking/features/add_transaction_screen/widgets/form.dart';
 import 'package:modsen_banking/features/add_transaction_screen/widgets/label.dart';
 import 'text_input_cubit.dart';
-import '../entities/transaction.dart';
 import '../../../core/constants/styles.dart';
 
 class AddTransactionForm extends StatelessWidget {
-  final Transaction transaction;
-
-  const AddTransactionForm({Key? key, required this.transaction})
-      : super(key: key);
+  const AddTransactionForm({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => AddTransactionFormCubit(transaction),
+      create: (_) => AddTransactionFormCubit(),
       child: Builder(
         builder: (context) {
           final formCubit = context.read<AddTransactionFormCubit>();

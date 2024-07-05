@@ -1,29 +1,29 @@
+import 'dart:async';
 
-import 'package:cubit_form/cubit_form.dart'; 
-import '../entities/transaction.dart';
+import 'package:cubit_form/cubit_form.dart';
 
 class AddTransactionFormCubit extends FormCubit {
-  AddTransactionFormCubit(Transaction transaction) {
+  AddTransactionFormCubit() {
     companyName = FieldCubit<String>(
-      initalValue: transaction.companyName,
+      initalValue: '',
       validations: [
         RequiredStringValidation('Company name is required'),
       ],
     );
     transactionNumber = FieldCubit<String>(
-      initalValue: transaction.transactionNumber,
+      initalValue: '',
       validations: [
         RequiredStringValidation('Transaction number is required'),
       ],
     );
     status = FieldCubit<String>(
-      initalValue: transaction.status,
+      initalValue: '',
       validations: [
         RequiredStringValidation('Status is required'),
       ],
     );
     amount = FieldCubit<String>(
-      initalValue: transaction.amount,
+      initalValue: '',
       validations: [
         RequiredStringValidation('Amount is required'),
       ],
@@ -38,7 +38,8 @@ class AddTransactionFormCubit extends FormCubit {
   late final FieldCubit<String> amount;
 
   @override
-  Future<void> onSubmit() async {
-
+  FutureOr<void> onSubmit() {
+    // TODO: list с транзакциями
+    throw UnimplementedError();
   }
 }

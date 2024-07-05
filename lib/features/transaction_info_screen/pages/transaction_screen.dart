@@ -11,6 +11,8 @@ class TransactionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const SizedBox(),
+        leadingWidth: 0,
         backgroundColor: Colors.black,
         title: const Text(
           'Transaction',
